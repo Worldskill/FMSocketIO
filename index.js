@@ -15,6 +15,11 @@ var io = require('socket.io-client')(https, {
 https.listen(3000, function(){ console.log('listening on *:3000');});
 
 var serverID = 'undefined';
+
+socket.on("connect_error", (err) => {
+    console.log(`connect_error due to ${err.message}`);
+  });
+  
 io.on('connection', function (socket){
     console.log('a user connected: ' + socket.id + " (server: " + serverID + " )");
     //register the server id, received the command from unity
@@ -34,7 +39,7 @@ io.on('connection', function (socket){
            console.log('user disconnected: ' + socket.id);
         }
     });
-
+    
     socket.on('OnReceiveData', function (data){
         if (serverID != 'undefined')
         {
