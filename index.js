@@ -5,7 +5,7 @@ app.use(express.static(__dirname));
 var http = require('http').createServer(app);
 // var io = require('socket.io')(http, {allowEIO3: true, allowEIO4: true, serveClient: true});
 
-var io = require('socket.io')(http, {
+var io = require('socket.io-client')(http, {
   allowEIO3: true,
   allowEIO4: true,
   serveClient: true,
