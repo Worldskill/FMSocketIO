@@ -2,17 +2,17 @@ var express = require('express');
 var app = express();
 app.use(express.static(__dirname));
 
-var http = require('http').createServer(app);
+var https = require('https').createServer(app);
 // var io = require('socket.io')(http, {allowEIO3: true, allowEIO4: true, serveClient: true});
 
-var io = require('socket.io-client')(http, {
+var io = require('socket.io-client')(https, {
   allowEIO3: true,
   allowEIO4: true,
   serveClient: true,
-  cors: { origin: '*'}
+  cors: { origin: '*'},
 });
 
-http.listen(3000, function(){ console.log('listening on *:3000');});
+https.listen(3000, function(){ console.log('listening on *:3000');});
 
 var serverID = 'undefined';
 io.on('connection', function (socket){
