@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname));
 
 var http = require('http').createServer(app);
 // var io = require('socket.io')(http, {allowEIO3: true, allowEIO4: true, serveClient: true});
