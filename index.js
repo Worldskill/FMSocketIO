@@ -5,7 +5,7 @@ app.use(express.static(__dirname));
 var http = require('http').createServer(app);
 // var io = require('socket.io')(http, {allowEIO3: true, allowEIO4: true, serveClient: true});
 
-var io = require('/socket.io-client')(http, {
+var io = require('socket.io')(http, {
   allowEIO3: true,
   allowEIO4: true,
   serveClient: true,
@@ -15,11 +15,6 @@ var io = require('/socket.io-client')(http, {
 http.listen(8080, function(){ console.log('listening on *:8080');});
 
 var serverID = 'undefined';
-
-socket.on("connect_error", (err) => {
-    console.log(`connect_error due to ${err.message}`);
-  });
-  
 io.on('connection', function (socket){
     console.log('a user connected: ' + socket.id + " (server: " + serverID + " )");
     //register the server id, received the command from unity
