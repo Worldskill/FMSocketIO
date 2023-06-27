@@ -11,9 +11,8 @@ var io = require('socket.io')(http, {
   serveClient: true,
   cors: { origin: '*'},
 });
-
+console.log("initialized");
 http.listen(8080, function(){ console.log('listening on *:8080');});
-
 var serverID = 'undefined';
 io.on('connection', function (socket){
     console.log('a user connected: ' + socket.id + " (server: " + serverID + " )");
